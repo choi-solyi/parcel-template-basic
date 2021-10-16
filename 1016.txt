@@ -1,0 +1,58 @@
+번들러 : vue 나 react를 변환해줌
+Parcel , Webpack , Rollup
+
+파슬 : 단순한 자동 번들링. 소,중형에 적합
+웹팩 : 매우 꼼꼼한 구성. 중,대형에 접학
+
+@이미지 파일 정적 파일로 관리하기
+프로젝트 생성 후
+npm init -y
+npm i -D parcel-bundler
+npm i -D parcel-plugin-static-files-copy
+package.json에 아래 추가
+  "staticFiles":{
+    "staticPath": "static"
+  }
+
+@autoprefixer
+npm i -D postcss autoprefixer
+npm i -D autoprefixer@9
+브라우저리스트 옵션은 현재 npm프로젝트에서 지원할 브라우저의 범위를 명시하는 용도.
+그 명시를 autoprefixer 패키지가 활용
+package.json 에 아래 추가
+  "browserslist": [
+    "> 1%", 
+    "last 2 versions"
+  ]
+
+.postcssrc.js 파일 생성 후 다음 추가
+module.exports = {
+    plugins:[
+        require('autoprefixer')
+    ]
+}
+
+
+@babel : ES6 이전버전에서도 호환이 되도록 도와주는 
+npm i -D @babel/core @babel/preset-env
+npm i -D @babel/plugin-transform-runtime
+
+.bablerc.js 생성 후 다음 추가
+module.exports = {
+    presets: ['@babel/preset-env'],
+    plugins: [
+        '@babel/plugin-transform-runtime'
+    ]
+}
+
+
+
+포트번호 변경
+parcel serve entry.js --port 1111
+
+브라우저 열기 (기본 비활성임)
+parcel entry.js --open
+
+https://codepen.io
+https://sass-lang.com/
+https://ko.parceljs.org/
